@@ -1,0 +1,40 @@
+
+    
+<mat-card  class="mat-card mat-elevation-z5" >
+        <mat-card-header class="header">Login</mat-card-header><br><br>
+        <mat-card-content class="mat-content">
+          <form  [formGroup]="loginForm" (ngSubmit)="submit()">
+
+            <mat-form-field class="example-full-width">
+              <mat-label>Email</mat-label>
+              <input matInput  placeholder="email" name="email" formControlName="email" >
+              <!-- <mat-error *ngIf="name.invalid && (name.dirty || loginForm.submitted)">
+                Username is required.
+              </mat-error> -->
+              <mat-error  *ngIf="email?.errors?.['required']">
+              Email is Required  
+              </mat-error>
+              <mat-error  *ngIf="email?.errors?.['email']">
+               Please Enter a correct email format 
+                </mat-error>
+            </mat-form-field>
+            <mat-form-field class="example-full-width">
+              <mat-label>Enter your password</mat-label>
+              <input matInput [type]="hide ? 'password' : 'text'" name="password" formControlName="password">
+              <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+              <mat-error  *ngIf="password?.errors?.['required']">
+                Password is Required  
+                </mat-error>
+            
+            </mat-form-field>
+            <mat-card-footer class="mat-card-footer"> 
+              <button  mat-flat-button color="accent" type="submit">Submit</button>
+              <p class="footer">New User? <a routerLink="/signup" >Sign Up</a></p>
+          </mat-card-footer>
+          </form>
+      </mat-card-content>
+         
+       
+  </mat-card>
